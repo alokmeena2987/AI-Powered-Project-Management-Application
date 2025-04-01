@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer circle background -->
+  <circle cx="100" cy="100" r="75" fill="url(#gradient)" />
+  
+  <!-- Checkmark icon -->
+  <path d="M82 110L95 123L120 85" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Decorative elements (squares with rounded corners) -->
+  <rect x="50" y="50" width="20" height="20" rx="6" fill="white" opacity="0.2"/>
+  <rect x="130" y="130" width="20" height="20" rx="6" fill="white" opacity="0.2"/>
+  <rect x="50" y="130" width="10" height="10" rx="3" fill="white" opacity="0.15"/>
+  <rect x="140" y="50" width="10" height="10" rx="3" fill="white" opacity="0.15"/>
+  
+  <!-- Linear gradient for dynamic coloring -->
+  <defs>
+    <linearGradient id="gradient" x1="25" y1="25" x2="175" y2="175" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+</svg> 

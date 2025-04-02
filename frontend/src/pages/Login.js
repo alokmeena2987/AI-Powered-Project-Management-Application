@@ -9,7 +9,6 @@ import {
   Paper,
   Alert,
   useTheme,
-  alpha,
   InputAdornment,
   IconButton
 } from '@mui/material';
@@ -21,6 +20,7 @@ import {
 } from '@mui/icons-material';
 import { login } from '../services/api';
 import { useAuth } from '../context/AuthContext';
+import './Login.css';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -32,6 +32,9 @@ const Login = () => {
     email: '',
     password: ''
   });
+  
+  const isDarkMode = theme.palette.mode === 'dark';
+  const themeClass = isDarkMode ? 'dark' : 'light';
 
   const handleChange = (e) => {
     setFormData({
@@ -57,51 +60,27 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
+
   return (
-    <Box
-      sx={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: theme => theme.palette.mode === 'light'
-          ? `linear-gradient(45deg, ${alpha(theme.palette.primary.light, 0.1)}, ${alpha(theme.palette.primary.main, 0.05)})`
-          : `linear-gradient(45deg, ${alpha(theme.palette.primary.dark, 0.5)}, ${alpha(theme.palette.background.default, 0.7)})`
-      }}
-    >
+    <Box className={`login-container ${themeClass}`}>
       <Container maxWidth="sm">
         <Paper 
-          elevation={theme.palette.mode === 'dark' ? 2 : 1} 
-          sx={{ 
-            p: { xs: 3, md: 5 }, 
-            borderRadius: 3,
-            backdropFilter: 'blur(10px)',
-            background: theme => alpha(theme.palette.background.paper, theme.palette.mode === 'light' ? 0.8 : 0.6),
-            boxShadow: theme => theme.palette.mode === 'light' 
-              ? '0 10px 30px -5px rgba(0, 0, 0, 0.1)'
-              : '0 10px 30px -5px rgba(0, 0, 0, 0.3)',
-            border: theme => `1px solid ${alpha(theme.palette.primary.main, 0.1)}`
-          }}
+          elevation={isDarkMode ? 2 : 1} 
+          className={`login-paper ${themeClass}`}
+          sx={{ p: { xs: 3, md: 5 } }}
         >
           <Box sx={{ mb: 3, textAlign: 'center' }}>
             <Typography 
               component="h1" 
               variant="h4" 
-              sx={{ 
-                fontWeight: 'bold', 
-                mb: 1,
-                background: theme => `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
+              className="login-heading"
             >
               Welcome Back
             </Typography>
             <Typography 
               variant="body1" 
               color="text.secondary"
-              sx={{ fontWeight: 'medium' }}
+              className="login-subheading"
             >
               Sign in to access your projects
             </Typography>
@@ -110,11 +89,7 @@ const Login = () => {
           {error && (
             <Alert 
               severity="error" 
-              sx={{ 
-                mb: 3, 
-                borderRadius: 2,
-                boxShadow: theme => `0 2px 8px ${alpha(theme.palette.error.main, 0.15)}`
-              }}
+              className={`error-alert ${themeClass}`}
             >
               {error}
             </Alert>
@@ -177,15 +152,7 @@ const Login = () => {
               fullWidth
               variant="contained"
               size="large"
-              sx={{ 
-                mt: 2, 
-                mb: 3, 
-                py: 1.2,
-                fontSize: '1rem',
-                fontWeight: 'medium',
-                borderRadius: 2,
-                boxShadow: theme => `0 4px 14px ${alpha(theme.palette.primary.main, 0.4)}`
-              }}
+              className={`submit-button ${themeClass}`}
             >
               Sign In
             </Button>
@@ -198,12 +165,7 @@ const Login = () => {
                 to="/signup" 
                 variant="outlined"
                 fullWidth
-                sx={{
-                  borderRadius: 2,
-                  py: 1,
-                  textTransform: 'none',
-                  fontWeight: 'medium'
-                }}
+                className="create-account-button"
               >
                 Create Account
               </Button>

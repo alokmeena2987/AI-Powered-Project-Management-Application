@@ -8,7 +8,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import { ProjectProvider, useProjectContext } from './context/ProjectContext';
 import { OrganizationProvider } from './context/OrganizationContext';
 import Layout from './components/Layout';
-import Login from './pages/Login';
+import Login from './pages/Login';  
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Organizations from './pages/Organizations';
@@ -40,7 +40,6 @@ const ProtectedRoute = ({ children }) => {
 };
 
 // Route guard for ID parameters - validates organization ID before rendering component
-// This prevents invalid IDs from being passed to components
 const ValidatedOrgRoute = ({ children }) => {
   // Remove unused params
   const pathSegments = window.location.pathname.split('/');
@@ -63,7 +62,7 @@ const ValidatedOrgRoute = ({ children }) => {
 
 // Resume project creation route
 const ResumeProjectCreationRoute = ({ children }) => {
-  const { projectFormCompleted, activeStep } = useProjectContext(); // Remove unused organizationId
+  const { projectFormCompleted, activeStep } = useProjectContext();
   
   // If they've already started the project creation flow, take them to where they left off
   if (projectFormCompleted && activeStep > 0) {

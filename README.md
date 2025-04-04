@@ -1,10 +1,5 @@
 # Project Management Application
 
-<div align="center">
-  <img src="frontend/public/logo.png" alt="Project Management App Logo" width="200"/>
-  <h3>AI-Powered Project Management Tool</h3>
-</div>
-
 ## Overview
 
 This project management application is a comprehensive solution designed to help teams and individuals efficiently organize, track, and collaborate on projects. The application leverages artificial intelligence to generate project roadmaps and simplifies task management through an intuitive user interface built with React and Material UI.
